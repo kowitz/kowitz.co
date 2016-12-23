@@ -2,20 +2,28 @@ html {
   background-color: #eee;
   font-family: 'Merriweather', serif;
   line-height: 1.6;
-  font-size: 20px;
+  font-size: 16px;
+  color: #333;
 }
 body {
-  margin: 0 auto;
-  padding: 40px;
+  margin: 0px auto;
+  padding: 15px 30px;
   max-width: 36em;
 }
-
 a, a:visited {
-  color: #36c;
+  color: #25b;
   text-decoration: none;
 }
 a:hover {
   background-color: #fff;
   box-shadow: 0 0 8px #fff;
   border-radius: 4px;
+}
+@media (min-width: 600px) {
+  html {
+    font-size: 20px;
+  }
+  body {
+    padding: 30px 40px;
+  }
 }
