@@ -1,7 +1,21 @@
+html {
+  background-color: #eee;
+  font-family: 'Merriweather', serif;
+  line-height: 1.6;
+  font-size: 20px;
+}
 body {
-  font-family: helvetica, arial, sans-serif;
-  line-height: 1.4;
-  font-size: 16px;
-  margin: 40px;
-  max-width: 40em;
+  margin: 0 auto;
+  padding: 40px;
+  max-width: 36em;
+}
+
+a, a:visited {
+  color: #36c;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #fff;
+  box-shadow: 0 0 8px #fff;
+  border-radius: 4px;
 }
