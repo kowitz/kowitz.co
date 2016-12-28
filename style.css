@@ -35,4 +35,11 @@ a:hover {
   body {
     padding: 40px;
   }
+  .em {
+    float: left;
+    margin-top: 0.1em;
+  }
+  p {
+    margin-left: 3.4em;
+  }
 }
