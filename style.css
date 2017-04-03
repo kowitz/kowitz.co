@@ -1,14 +1,14 @@
 html {
   background-color: #eee;
-  font-family: 'Merriweather', serif;
+  font-family: 'Crimson Text', serif;
   line-height: 1.8;
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
 }
 body {
   margin: 0px auto;
   padding: 30px;
-  max-width: 36em;
+  max-width: 34em;
 }
 p {
   margin: 0 0 1.8em 0;
@@ -38,7 +38,7 @@ footer p {
 }
 @media (min-width: 600px) {
   html {
-    font-size: 18px;
+    font-size: 22px;
   }
   body {
     padding: 80px 40px 20px 40px;
