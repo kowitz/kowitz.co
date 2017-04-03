@@ -1,14 +1,12 @@
-html {
+body {
   background-color: #eee;
+  margin: 0px auto;
+  padding: 30px;
+  max-width: 34em;
   font-family: 'Crimson Text', serif;
   line-height: 1.8;
   font-size: 18px;
   color: #333;
-}
-body {
-  margin: 0px auto;
-  padding: 30px;
-  max-width: 34em;
 }
 p {
   margin: 0 0 1.8em 0;
@@ -37,10 +35,8 @@ footer p {
   font-size: 0.8rem;
 }
 @media (min-width: 600px) {
-  html {
-    font-size: 22px;
-  }
   body {
+    font-size: 22px;
     padding: 80px 40px 20px 40px;
   }
   .em {
