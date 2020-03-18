@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/kowitz
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://kowitz.co
+  * I am kowitz (https://keybase.io/kowitz) on keybase.
+  * I have a public key ASD1UdLem1cmUulJ7sk2phDhzIOrMm0wpximi5pk3TDZngo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120f551d2de9b572652e949eec936a610e1cc83ab326d30a718a68b9a64dd30d99e0a",
+      "host": "keybase.io",
+      "kid": "0120f551d2de9b572652e949eec936a610e1cc83ab326d30a718a68b9a64dd30d99e0a",
+      "uid": "b22399401baa56eb112a104dd05ffb19",
+      "username": "kowitz"
+    },
+    "merkle_root": {
+      "ctime": 1584565789,
+      "hash": "308dc4a7f5c2fbe918998f19d9a15cb504a7f0e3ca4fce935bb5ae437b1fcd26a2a962c34fcfa7920222be24d53c8e204cb9a06917c4d935ca4c8700a94766a1",
+      "hash_meta": "96e79763634ce8d782557e1eb9ba2826d1059aa9c19ba174b68c2754f27d0cf8",
+      "seqno": 15485418
+    },
+    "service": {
+      "entropy": "NyvwE2Cq54WsJ6Z7vgstSye1",
+      "hostname": "kowitz.co",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.3.0"
+  },
+  "ctime": 1584565796,
+  "expire_in": 504576000,
+  "prev": "4ee232e48bceed832342ca603edc35edaa97ee9ba1b8a3c69753bafe3e4d1af9",
+  "seqno": 6,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg9VHS3ptXJlLpSe7JNqYQ4cyDqzJtMKcYpouaZN0w2Z4Kp3BheWxvYWTESpcCBsQgTuIy5IvO7YMjQspgPtw17aqX7puhuKPGl1O6/j5NGvnEIEOJ9Xb7Wu4bCVBWIE7Gf3zpL0yX4Ryr0AhC3fIxR5WDAgHCo3NpZ8RAhV28r8AYpsByargDm/Z8gIh1AksePdgEavsXhFP6ZeHPg0Z6PojOEF/VT+CqxyqrTlgiqzPR/YEnJ48SBDjTBKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEINOC3azhr5u2onw26sAEheaqYTcEih9xTxCI9QyLXXh1o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kowitz
+
+==================================================================
