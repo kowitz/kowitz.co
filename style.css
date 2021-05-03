@@ -3,45 +3,45 @@ body {
   margin: 0px auto;
   padding: 30px;
   max-width: 34em;
-  font-family: 'Crimson Text', serif;
+  font-family: "Source Code Pro", monospace;
   line-height: 1.8;
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
 }
 p {
   margin: 0 0 1.8em 0;
 }
-a, a:visited {
+a,
+a:visited {
   color: #25b;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgb(151, 177, 228);
+  text-underline-offset: 0.1em;
 }
 a:hover {
-  background-color: #fff;
-  box-shadow: 0 0 8px #fff;
-  border-radius: 4px;
+  text-decoration-color: #25b;
 }
-.em {
+.emoji {
   display: block;
-  width: 1.4em;
-  height: 1.4em;
-  margin-bottom: 0.3em;
+  font-size: 24px;
 }
 
 footer p {
   margin-top: 6em;
   padding-top: 1em;
-  border-top: 1px solid #999;
-  opacity: 0.3;
-  font-size: 0.8rem;
+  border-top: 1px solid #ccc;
+  color: #777;
+  font-size: 16px;
 }
 @media (min-width: 600px) {
   body {
-    font-size: 22px;
+    font-size: 20px;
     padding: 80px 40px 20px 40px;
   }
-  .em {
+  .emoji {
+    font-size: 32px;
     float: left;
-    margin-top: 0.1em;
+    margin-top: -0.25em;
   }
   p {
     margin-left: 3.4em;
