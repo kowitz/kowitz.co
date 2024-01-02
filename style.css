@@ -86,6 +86,7 @@ nav {
 
   background: rgba(242, 242, 242, 0.7);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   color: #666;
 
