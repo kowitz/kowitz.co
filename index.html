@@ -1,149 +1,215 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Braden Kowitz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="style.css" media="screen" />
+    <script src="main.js" async></script>
   </head>
   <body>
+    <nav>
+      <div class="nav__title">Braden Kowitz</div>
+      <a class="nav__link" href="#experience">Experience</a>
+      <a class="nav__link" href="#approach">Approach</a>
+      <a class="nav__link" href="#about">About</a>
+    </nav>
 
-    <span class="emoji">😀</span>
-    <p>
-    Hello, I’m Braden Kowitz.
-    </p>
-    
-    <span class="emoji">💳</span>
-    <p>
-      I’m a Product Design Manager at <a href="http://stripe.com/">Stripe</a>, where I help to lead Stripe's consumer-focused products.
-      We're building a kick-ass consumer design team, and we're hiring.
-      <a href="https://stripe.com/jobs/search?query=consumer+&teams=Design">Let's work together</a>/!
-    </p>
-    
-    <span class="emoji">🏔</span>
-    <p>
-      Previously, I was a co-founder at <a href="http://www.range.co/?utm_medium=social&utm_source=kowitz">Range</a>,
-      a startup focused on helping teams work better together.
-    </p>
+    <div class="section intro">
+      <div class="content">
+        <h1 class="intro__name">Braden Kowitz</h1>
+        <p class="intro__about">
+          Hello, I’m a design leader based in San Francisco.
+          <span class="intro__corner intro__corner--1"></span>
+          <span class="intro__corner intro__corner--2"></span>
+          <span class="intro__corner intro__corner--3"></span>
+          <span class="intro__corner intro__corner--4"></span>
+          <img src="icon/hand.svg" class="intro__hand" />
+        </p>
+      </div>
+      <div class="intro__circle"></div>
+      <img src="img/grid.svg" class="intro__grid" />
+    </div>
 
-    <span class="emoji">🚀</span>
-    <p>
-    Before my startup experience, I was a design partner at <a href="http://gv.com/">GV</a>,
-    a venture capital fund backed by Google.
-    I taught startups how to listen to customers,
-    how to scale their design teams,
-    how to build processes that support innovation,
-    and how to create workplaces where great design can happen.
-    Through this role I’ve had the
-    good fortune to work with many truly amazing startups:
-    <a href="http://classpass.com">ClassPass</a>,
-    <a href="http://gusto.com">Gusto</a>,
-    <a href="http://slack.com">Slack,</a>
-    <a href="http://medium.com">Medium</a>,
-    <a href="http://flatironhealth.com">Flatiron Health</a>,
-    <a href="http://tunein.com">TuneIn</a>,
-    <a href="http://bluebottlecoffee.com">Blue Bottle Coffee</a>,
-    <a href="http://23andme.com">23andMe</a>,
-    <a href="http://onemedical.com">One Medical Group</a>,
-    <a href="http://hubspot.com">HubSpot</a>,
-    <a href="http://retailmenot.com">RetailMeNot</a>,
-    <a href="http://nest.com">Nest</a>,
-    and many more.
-    </p>
+    <div class="section section--white" id="experience">
+      <div class="content">
+        <h1 class="type-section-header">Experience</h1>
 
-    <span class="emoji">📘</span>
-    <p>
-    After working with so many teams, my GV colleagues and I decided to capture
-    some of the lessons we’ve learned along the way. This project started as
-    many <a href="https://library.gv.com/tagged/design">design articles</a>, and grew to become a
-    New York Times best selling book:
-    <a href="https://www.amazon.com/dp/150112174X/">Sprint: How to Solve
-    Big Problems and Test New Ideas in Just Five Days</a>.
-    </p>
+        <div class="experience__row">
+          <div class="experience__company">
+            <a href="http://stripe.com">
+              <img
+                class="experience__logo"
+                src="logo/stripe.svg"
+                alt="Stripe"
+              />
+            </a>
+          </div>
+          <div class="experience__about">
+            Led the consumer design team of 17 amazing designers, researchers,
+            and writers. Together we launched
+            <a href="https://stripe.com/link">Link</a> across 6 Stripe products,
+            and launched the first versions of
+            <a href="https://stripe.com/financial-connections">pay by bank</a>,
+            and <a href="https://stripe.com/use-cases/crypto">crypto onramp</a>.
+            Led product design for
+            <a href="https://stripe.com/payments">checkout experiences</a>.
+          </div>
+          <div class="experience__when">
+            2021 <span class="text-light">+2 yrs</span>
+          </div>
+        </div>
 
-    <span class="emoji">💬</span>
-    <p>
-    In addition to writing, I also speak at design and startup conferences
-    around the world. Recently I’ve been talking about
-    <a href="https://www.youtube.com/watch?v=DoEtYLOtqig">Design Culture</a>
-    (Slush, 2016), and how teams can create environments where designers
-    are productive and happy. I also love talking about
-    <a href="https://vimeo.com/188140190">Design Sprints</a>
-    (Webdagene, 2016) and
-    <a href="https://www.youtube.com/watch?v=jQl74ARR9RY">Failure</a>
-    (Airbnb, 2012).
-    </p>
+        <div class="experience__row">
+          <div class="experience__company">
+            <a href="http://range.co">
+              <img class="experience__logo" src="logo/range.svg" alt="Range" />
+            </a>
+          </div>
+          <div class="experience__about">
+            Co-founded <a href="https://range.co">Range</a>, with a mission to
+            build effective teams through software. Led Product and Design,
+            building a product that was loved by teams at Twitter, Carta,
+            Coursera, and more.
+          </div>
+          <div class="experience__when">
+            2017 <span class="text-light">+4 yrs</span>
+          </div>
+        </div>
 
-    <span class="emoji">📧</span>
-    <p>
-    Before I began advising startups, I was an early designer at Google.
-    I joined the company in 2005 and and led the design of several new
-    products including
-    <a href="https://gsuite.google.com/">Google for Business</a>,
-    <a href="https://www.google.com/sheets/about/">Google Spreadsheets</a>, and
-    <a href="https://www.google.com/trends/">Google Trends</a>.
-    I also led <a href="https://www.google.com/gmail/about/">Gmail</a>
-    design for several years before moving to GV.
-    </p>
+        <div class="experience__row">
+          <div class="experience__company">
+            <a href="http://gv.com">
+              <img class="experience__logo" src="logo/gv.svg" alt="GV" />
+            </a>
+          </div>
+          <div class="experience__about">
+            Pioneered the role of Design in VC. Built the GV design team.
+            Together we invented and popularized the
+            <a href="https://www.google.com/search?q=design+sprint"
+              >Design Sprint</a
+            >, including writing a NYT best selling
+            <a
+              href="https://www.amazon.com/Sprint-Solve-Problems-Test-Ideas/dp/150112174X"
+              >book</a
+            >. I worked with over 100 startups, coaching designers and design
+            leaders.
+          </div>
+          <div class="experience__when">
+            2010 <span class="text-light">+7 yrs</span>
+          </div>
+        </div>
 
-    <span class="emoji">💻</span>
-    <p>
-    I grew up in the Midwest and was pretty much always a nerd. I remember
-    spending hours upon hours with my
-    <a href="https://www.google.com/search?q=TI99">first computer</a>.
-    So it’s no surprise I ended up studying Computer Science at the
-    <a href="http://cs.uiuc.edu">University of Illinois</a>.
-    During my summers I built early virtual reality simulations at the
-    <a href="https://beckman.illinois.edu">Beckman Institute</a> and interactive data visualizations at
-    <a href="https://en.wikipedia.org/wiki/Lucent">Lucent Technologies</a>.
-    </p>
+        <div class="experience__row">
+          <div class="experience__company">
+            <a href="http://google.com">
+              <img
+                class="experience__logo"
+                src="logo/google.svg"
+                alt="Google"
+              />
+            </a>
+          </div>
+          <div class="experience__about">
+            Designed and launched the first versions of Google Workspace, Google
+            Spreadsheets, and Google Trends. Early contributor to Gmail.
+          </div>
+          <div class="experience__when">
+            2005 <span class="text-light">+4 yrs</span>
+          </div>
+        </div>
+        <div class="text-light experience__more">
+          More on
+          <a href="https://linkedin.com/in/kowitz" rel="me">LinkedIn</a>
+        </div>
+      </div>
+    </div>
 
-    <span class="emoji">😍</span>
-    <p>
-    But as much as I enjoyed engineering, my true passion has always been making
-    things for other people. So I decided to move into the field of design
-    by attending the <a href="https://www.hcii.cmu.edu/">Human-Computer Interaction</a> graduate program at
-    Carnegie Mellon. It’s been a fantastic journey ever since.
-    </p>
+    <div class="section" id="approach">
+      <div class="content">
+        <h1 class="type-section-header">My approach</h1>
+        <div class="approach__list">
+          <div class="approach__item">
+            <img src="icon/discovery.svg" class="approach__itemIcon" />
+            <div>
+              <h2 class="approach__title">Product Discovery</h2>
+              <p class="approach__about">
+                I'm passionate about helping cross-functional teams build a
+                process of product discovery: systematically exploring an
+                opportunity-solution space through user research, prototyping,
+                and in-market tests.
+              </p>
+            </div>
+          </div>
+          <div class="approach__item">
+            <img src="icon/team.svg" class="approach__itemIcon" />
+            <div>
+              <h2 class="approach__title">Effective Teams</h2>
+              <p class="approach__about">
+                Building healthy teams requires attention to the fundamentals:
+                Building trust and vulnerability, helping people get in the
+                groove so they can focus on what they do best, and creating
+                opportunities for growth.
+              </p>
+            </div>
+          </div>
+          <div class="approach__item">
+            <img src="icon/collab.svg" class="approach__itemIcon" />
+            <div>
+              <h2 class="approach__title">Cross-collaboration</h2>
+              <p class="approach__about">
+                I don't believe in design for its own sake. My approach is
+                cross-functional collaboration, bringing design methods to bear
+                on our key business challenges, whether that's in marketing,
+                product, or strategy.
+              </p>
+            </div>
+          </div>
+          <div class="approach__item">
+            <img src="icon/craft.svg" class="approach__itemIcon" />
+            <div>
+              <h2 class="approach__title">Craft & Quality</h2>
+              <p class="approach__about">
+                Design has a key role within organizations to lead the way
+                towards a culture of quality. That includes leaders setting a
+                very high bar, and the whole team building their skillsets of
+                critique, analysis, and exploration.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <span class="emoji">⛺</span>
-    <p>
-    If I’m not thinking about design, I’m probably thinking about
-    backpacking. My favorite trips have been to
-    <a href="https://www.instagram.com/p/BLlyEybB2WM/">Iceland</a>,
-    <a href="https://www.instagram.com/p/qrNrNxwFoz/">Rae Lakes</a>,
-    <a href="https://www.instagram.com/p/BF-IvsUwFtm/">Desolation Wilderness</a>,
-    <a href="https://www.instagram.com/p/_7cuN0wFku/">Cone Peak</a>, and
-    <a href="https://www.instagram.com/p/BLaV1jwh_KH/">the Minarets</a>.
-    This world is too amazing not to explore!
-    </p>
-
-    <span class="emoji">🔭</span>
-    <p>
-    You can find me on
-    <a href="https://twitter.com/kowitz" rel="me">Twitter</a> and
-    <a href="https://medium.com/@kowitz" rel="me">Medium</a>.
-    </p>
-
-    <footer>
-      <p>
-        This website was made with
-        <a href="https://github.com/kowitz/kowitz.co">GitHub</a>
-        and <a href="https://netlify.com">Netlify</a>.
-      </p>
-    </footer>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-89922305-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-
+    <div class="section section--mint" id="about">
+      <div class="content">
+        <h1 class="type-section-header">About me</h1>
+        <div class="about__layout">
+          <div class="about__photoSet">
+            <img src="photo/3.jpg" class="about__photo" />
+            <img src="photo/2.jpg" class="about__photo" />
+            <img src="photo/4.jpg" class="about__photo" />
+            <img src="photo/1.jpg" class="about__photo" />
+          </div>
+          <div class="about__content">
+            <p>
+              When I'm not deep in work, you'll usually find me enjoying the
+              outdoors with my family and friends. I live in the Mission
+              District of San Francisco, and get around the city almost
+              exclusively by bike. We love our cargo bike for family adventures,
+              which is why I'm a strong advocate for improving our civic
+              infrastructure to keep vulnerable road users safe.
+            </p>
+            <p>
+              When I escape the bounds of SF, it's usually to go hiking or
+              backpacking with friends. I love living in the bay area and I'm
+              immensely grateful for ability to experience the nature and beauty
+              California has to offer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
