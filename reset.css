@@ -34,3 +34,12 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+button {
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+}
