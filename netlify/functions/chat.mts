@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { getStore } from "@netlify/blobs";
+import { Client } from "langsmith";
 import { wrapAnthropic } from "langsmith/wrappers/anthropic";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -21,7 +22,11 @@ function loadSystemPrompt(): string {
 
 const systemPrompt = loadSystemPrompt();
 
-const anthropic = wrapAnthropic(new Anthropic());
+const tracingEnabled = process.env.LANGSMITH_TRACING === "true";
+const langsmithClient = tracingEnabled ? new Client() : undefined;
+const anthropic = wrapAnthropic(new Anthropic(), {
+  client: langsmithClient,
+});
 
 const PER_IP_HOURLY_LIMIT = 100;
 const GLOBAL_HOURLY_LIMIT = 1000;
@@ -197,9 +202,16 @@ export default async (req: Request) => {
               controller.enqueue(encoder.encode(event.delta.text));
             }
           }
-          controller.close();
         } catch (err) {
           console.error("Stream error:", err);
+        } finally {
+          if (langsmithClient) {
+            try {
+              await langsmithClient.awaitPendingTraceBatches();
+            } catch (err) {
+              console.error("LangSmith flush error:", err);
+            }
+          }
           try { controller.close(); } catch {}
         }
       },
