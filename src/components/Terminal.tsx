@@ -9,6 +9,8 @@ const BANNER = ` ___             _            _  __           _ _
 |___/_| \\__,_\\__,_\\___|_||_| |_|\\_\\___/\\_/\\_/|_|\\__/__|`;
 
 const STORAGE_KEY = "kowitz-chat-messages";
+const CONVERSATION_ID_KEY = "kowitz-conversation-id";
+const SPINNER_FRAMES = ["|", "/", "-", "\\"] as const;
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -29,6 +31,18 @@ function saveMessages(messages: ChatMessage[]) {
   } catch {}
 }
 
+function loadConversationId(): string {
+  try {
+    const existing = localStorage.getItem(CONVERSATION_ID_KEY);
+    if (existing) return existing;
+    const fresh = crypto.randomUUID();
+    localStorage.setItem(CONVERSATION_ID_KEY, fresh);
+    return fresh;
+  } catch {
+    return crypto.randomUUID();
+  }
+}
+
 function TerminalApp() {
   const [messages, setMessages] = useState<ChatMessage[]>(loadMessages);
   const [input, setInput] = useState("");
@@ -36,10 +50,20 @@ function TerminalApp() {
   const [streamingText, setStreamingText] = useState("");
   const [error, setError] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const conversationIdRef = useRef<string>(loadConversationId());
+  const [spinnerFrame, setSpinnerFrame] = useState(0);
 
   useEffect(() => {
     saveMessages(messages);
   }, [messages]);
+
+  useEffect(() => {
+    if (!streaming || streamingText) return;
+    const id = setInterval(() => {
+      setSpinnerFrame((f) => (f + 1) % SPINNER_FRAMES.length);
+    }, 1200 / SPINNER_FRAMES.length);
+    return () => clearInterval(id);
+  }, [streaming, streamingText]);
 
   const sendMessage = useCallback(async (userInput: string, retryMessages?: ChatMessage[]) => {
     const newUserMessage: ChatMessage = { role: "user", content: userInput };
@@ -60,7 +84,7 @@ function TerminalApp() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({ messages: history, conversationId: conversationIdRef.current }),
         signal: controller.signal,
       });
 
@@ -103,6 +127,9 @@ function TerminalApp() {
 
       if (command === "clear") {
         saveMessages([]);
+        try {
+          localStorage.removeItem(CONVERSATION_ID_KEY);
+        } catch {}
         window.location.reload();
         return;
       }
@@ -185,7 +212,7 @@ function TerminalApp() {
 
       {streaming && !streamingText && (
         <Box flexDirection="column">
-          <Text dimColor>Thinking...</Text>
+          <Text dimColor>{SPINNER_FRAMES[spinnerFrame]}</Text>
           <Text> </Text>
         </Box>
       )}

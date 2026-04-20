@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { getStore } from "@netlify/blobs";
+import { wrapAnthropic } from "langsmith/wrappers/anthropic";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -20,7 +21,7 @@ function loadSystemPrompt(): string {
 
 const systemPrompt = loadSystemPrompt();
 
-const anthropic = new Anthropic();
+const anthropic = wrapAnthropic(new Anthropic());
 
 const PER_IP_HOURLY_LIMIT = 100;
 const GLOBAL_HOURLY_LIMIT = 1000;
@@ -97,7 +98,7 @@ export default async (req: Request) => {
     });
   }
 
-  let body: { messages?: Message[] };
+  let body: { messages?: Message[]; conversationId?: string };
   try {
     body = await req.json();
   } catch {
@@ -113,6 +114,11 @@ export default async (req: Request) => {
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  const conversationId =
+    typeof body.conversationId === "string" && body.conversationId.length <= 128
+      ? body.conversationId
+      : undefined;
 
   if (body.messages.length > MAX_CONVERSATION_LENGTH) {
     return new Response(
@@ -144,19 +150,40 @@ export default async (req: Request) => {
   }
 
   try {
-    const response = await anthropic.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 1024,
-      system: [
-        {
-          type: "text",
-          text: systemPrompt,
-          cache_control: { type: "ephemeral" },
+    const lastUserMessage =
+      [...body.messages].reverse().find((m) => m.role === "user")?.content ?? "";
+    const runName =
+      lastUserMessage.length > 80
+        ? `${lastUserMessage.slice(0, 80)}…`
+        : lastUserMessage || "chat-turn";
+
+    const response = await anthropic.messages.create(
+      {
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 1024,
+        system: [
+          {
+            type: "text",
+            text: systemPrompt,
+            cache_control: { type: "ephemeral" },
+          },
+        ],
+        messages: body.messages,
+        stream: true,
+      },
+      {
+        langsmithExtra: {
+          name: runName,
+          metadata: {
+            ...(conversationId
+              ? { session_id: conversationId, thread_id: conversationId }
+              : {}),
+            user_message: lastUserMessage,
+            turn_index: body.messages.filter((m) => m.role === "user").length,
+          },
         },
-      ],
-      messages: body.messages,
-      stream: true,
-    });
+      },
+    );
 
     const encoder = new TextEncoder();
     const readableStream = new ReadableStream({
