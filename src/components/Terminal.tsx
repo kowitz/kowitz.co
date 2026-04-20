@@ -1,5 +1,5 @@
-import { useState, useCallback, useEffect, useRef } from "react";
-import { InkXterm, Box, Text, useInput } from "ink-web";
+import { useState, useCallback, useEffect, useMemo, useRef } from "react";
+import { InkXterm, Box, Static, Text, useInput } from "ink-web";
 import "ink-web/css";
 import "@xterm/xterm/css/xterm.css";
 
@@ -97,19 +97,27 @@ function TerminalApp() {
     const trimmed = value.trim();
     if (!trimmed) return;
 
-    if (trimmed.toLowerCase() === "clear") {
-      setMessages([]);
-      setStreamingText("");
-      setError(null);
-      saveMessages([]);
+    if (trimmed.startsWith("/")) {
+      const command = trimmed.slice(1).toLowerCase().split(/\s+/)[0];
       setInput("");
-      return;
-    }
 
-    if (trimmed.toLowerCase() === "retry" && error) {
-      setError(null);
-      sendMessage("", messages);
-      setInput("");
+      if (command === "clear") {
+        saveMessages([]);
+        window.location.reload();
+        return;
+      }
+
+      if (command === "retry") {
+        if (error) {
+          setError(null);
+          sendMessage("", messages);
+        } else {
+          setError(`Nothing to retry`);
+        }
+        return;
+      }
+
+      setError(`Unknown command: /${command}`);
       return;
     }
 
@@ -131,23 +139,42 @@ function TerminalApp() {
 
   const showPlaceholder = input.length === 0 && messages.length === 0 && !streaming;
 
+  type StaticItem =
+    | { key: string; kind: "banner" }
+    | { key: string; kind: "message"; msg: ChatMessage };
+  const staticItems = useMemo<StaticItem[]>(
+    () => [
+      { key: "banner", kind: "banner" },
+      ...messages.map((msg, i) => ({ key: `msg-${i}`, kind: "message" as const, msg })),
+    ],
+    [messages],
+  );
+
   return (
     <Box flexDirection="column">
-      <Text color="cyan">{BANNER}</Text>
-      <Text> </Text>
-      <Text>Product Design Leader.</Text>
-      <Text> </Text>
-
-      {messages.map((msg, i) => (
-        <Box key={i} flexDirection="column">
-          {msg.role === "user" ? (
-            <Text><Text color="green">&gt;</Text> {msg.content}</Text>
+      <Static items={staticItems}>
+        {(item) =>
+          item.kind === "banner" ? (
+            <Box key={item.key} flexDirection="column">
+              <Text color="cyan">{BANNER}</Text>
+              <Text> </Text>
+              <Text>Product Design Leader.</Text>
+              <Text> </Text>
+            </Box>
           ) : (
-            <Text>{msg.content}</Text>
-          )}
-          <Text> </Text>
-        </Box>
-      ))}
+            <Box key={item.key} flexDirection="column">
+              {item.msg.role === "user" ? (
+                <Text>
+                  <Text color="green">&gt;</Text> {item.msg.content}
+                </Text>
+              ) : (
+                <Text>{item.msg.content}</Text>
+              )}
+              <Text> </Text>
+            </Box>
+          )
+        }
+      </Static>
 
       {streaming && streamingText && (
         <Box flexDirection="column">
@@ -166,7 +193,7 @@ function TerminalApp() {
       {error && (
         <Box flexDirection="column">
           <Text color="red">Error: {error}</Text>
-          <Text dimColor>(Type "retry" to try again)</Text>
+          <Text dimColor>(Type "/retry" to try again)</Text>
           <Text> </Text>
         </Box>
       )}
@@ -201,6 +228,8 @@ export default function Terminal() {
           },
           fontFamily: "'Courier New', 'Consolas', monospace",
           fontSize: 18,
+          cols: 60,
+          rows: 10,
         }}
       >
         <TerminalApp />

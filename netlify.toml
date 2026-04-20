@@ -5,7 +5,7 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  included_files = ["system-prompt.md"]
+  included_files = ["system-prompt/**/*.md"]
 
 [dev]
   command = "npm run dev"
