@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { InkXterm, Box, Static, Text, useInput } from "ink-web";
+import type { ITerminalOptions, ITerminalInitOnlyOptions } from "@xterm/xterm";
 import "ink-web/css";
 import "@xterm/xterm/css/xterm.css";
 
@@ -180,7 +181,7 @@ function TerminalApp() {
   return (
     <Box flexDirection="column">
       <Static items={staticItems}>
-        {(item) =>
+        {(item: StaticItem) =>
           item.kind === "banner" ? (
             <Box key={item.key} flexDirection="column">
               <Text color="cyan">{BANNER}</Text>
@@ -247,17 +248,19 @@ export default function Terminal() {
     <div style={{ width: "100%", height: "100%", padding: 64, background: "#1e1e1e" }}>
       <InkXterm
         focus
-        termOptions={{
-          theme: {
-            background: "#1e1e1e",
-            foreground: "#d4d4d4",
-            cursor: "#d4d4d4",
-          },
-          fontFamily: "'Courier New', 'Consolas', monospace",
-          fontSize: 18,
-          cols: 60,
-          rows: 10,
-        }}
+        termOptions={
+          {
+            theme: {
+              background: "#1e1e1e",
+              foreground: "#d4d4d4",
+              cursor: "#d4d4d4",
+            },
+            fontFamily: "'Courier New', 'Consolas', monospace",
+            fontSize: 18,
+            cols: 60,
+            rows: 10,
+          } as ITerminalOptions & ITerminalInitOnlyOptions
+        }
       >
         <TerminalApp />
       </InkXterm>
