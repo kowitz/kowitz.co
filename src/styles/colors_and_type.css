@@ -121,6 +121,23 @@
   --type-command: 400 var(--fs-3)/var(--lh-body)  var(--font-mono);
 }
 
+/* Bump the whole type scale up one stop on touch-class widths.
+   Because --type-* tokens reference --fs-*, everything keyed to the
+   design system scales together. */
+@media (max-width: 767px) {
+  :root {
+    --fs-0: 12px;
+    --fs-1: 13px;
+    --fs-2: 14px;
+    --fs-3: 16px;
+    --fs-4: 18px;
+    --fs-5: 22px;
+    --fs-6: 28px;
+    --fs-7: 40px;
+    --fs-8: 48px;
+  }
+}
+
 html, body {
   background: var(--bg-1);
   color: var(--fg-0);

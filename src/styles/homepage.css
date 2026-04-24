@@ -609,6 +609,17 @@ body { background: var(--bg-0); overflow: hidden; }
 .hp-app.mobile .hp-stream { padding: 14px 14px 6px; }
 .hp-app.mobile .hp-composer-wrap { padding: 8px 10px 10px; }
 
+/* Bump hardcoded-px chrome up one stop on mobile so it scales with the
+   design-token content above. */
+.hp-app.mobile .hp-stream .msg { font-size: var(--fs-3); }
+.hp-app.mobile .hp-composer input { font-size: var(--fs-3); }
+.hp-app.mobile .hp-composer .prompt { font-size: var(--fs-3); }
+.hp-app.mobile .hp-mob-tabs { font-size: var(--fs-1); }
+.hp-app.mobile .hp-mob-header .brand { font-size: var(--fs-3); }
+.hp-app.mobile .hp-status .chip { font-size: var(--fs-0); }
+.hp-app.mobile .hp-chat-row .title { font-size: var(--fs-2); }
+.hp-app.mobile .hp-rail-head { font-size: var(--fs-1); }
+
 /* Drawer */
 .hp-sheet-scrim {
   position: absolute;
