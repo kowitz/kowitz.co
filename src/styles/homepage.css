@@ -415,37 +415,20 @@ body { background: var(--bg-0); overflow: hidden; }
 
 /* Empty State */
 .hp-empty {
-  max-width: 62ch;
-  margin: 40px auto 0;
-  padding: 8px 0;
+  max-width: 80ch;
+  padding: 0;
 }
 
-.hp-empty .mark {
-  font: 500 32px/1 var(--font-mono);
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
+.hp-empty .name {
+  font: var(--type-body);
+  font-weight: 700;
+  color: var(--fg-2);
 }
 
 .hp-empty .role {
-  font: 400 13px/1.5 var(--font-mono);
-  color: var(--fg-1);
+  font: var(--type-body);
+  color: var(--fg-3);
 }
-
-.hp-empty .hint {
-  font: 400 13px/1.5 var(--font-mono);
-  color: var(--fg-2);
-  margin-top: 18px;
-}
-
-.hp-empty .cmds {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 24px;
-  margin-top: 10px;
-  font: 400 12.5px var(--font-mono);
-}
-
-.hp-empty .cmd-name { color: var(--accent); margin-right: 10px; }
 
 /* ===== COMPOSER ===== */
 .hp-composer-wrap {

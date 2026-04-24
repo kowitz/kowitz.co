@@ -3,7 +3,7 @@ import "../styles/colors_and_type.css";
 import "../styles/homepage.css";
 import {
   ChatHistoryPanel,
-  FileTreePanel,
+  // FileTreePanel,
   TabBar,
   Crumbs,
   ChatStream,
@@ -13,7 +13,7 @@ import {
   MobileDrawer,
   type ChatMessage,
   type ChatListItem,
-  type FileNode,
+  // type FileNode,
 } from "./homepage/parts";
 
 const STORAGE_KEY = "kowitz-chat-messages";
@@ -45,30 +45,29 @@ function loadConversationId(): string {
   }
 }
 
-// Stub sidebar content — the chat features aren't wired up yet, but the
-// UI shows what the finished product will look like.
-const STUB_FILES: FileNode[] = [
-  { kind: "file", id: "readme", name: "README.md" },
-  { kind: "file", id: "resume", name: "resume.md" },
-  { kind: "file", id: "about", name: "about.md" },
-  { kind: "file", id: "contact", name: "contact.md" },
-  {
-    kind: "folder",
-    id: "projects",
-    name: "projects",
-    open: true,
-    children: [
-      { kind: "file", id: "acme", name: "acme.md" },
-      { kind: "file", id: "fizz", name: "fizz.md" },
-    ],
-  },
-  {
-    kind: "folder",
-    id: "writing",
-    name: "writing",
-    children: [{ kind: "file", id: "latency", name: "on-latency.md" }],
-  },
-];
+// Placeholder file tree — hidden for now, will be restored later.
+// const STUB_FILES: FileNode[] = [
+//   { kind: "file", id: "readme", name: "README.md" },
+//   { kind: "file", id: "resume", name: "resume.md" },
+//   { kind: "file", id: "about", name: "about.md" },
+//   { kind: "file", id: "contact", name: "contact.md" },
+//   {
+//     kind: "folder",
+//     id: "projects",
+//     name: "projects",
+//     open: true,
+//     children: [
+//       { kind: "file", id: "acme", name: "acme.md" },
+//       { kind: "file", id: "fizz", name: "fizz.md" },
+//     ],
+//   },
+//   {
+//     kind: "folder",
+//     id: "writing",
+//     name: "writing",
+//     children: [{ kind: "file", id: "latency", name: "on-latency.md" }],
+//   },
+// ];
 
 export default function HomePage() {
   const [messages, setMessages] = useState<ChatMessage[]>(loadMessages);
@@ -198,7 +197,7 @@ export default function HomePage() {
   // Build a single chat list item reflecting the current session so the
   // rail isn't empty. Multi-chat history is a future feature.
   const currentTitle =
-    messages.find((m) => m.role === "user")?.content.slice(0, 40) || "new chat";
+    messages.find((m) => m.role === "user")?.content.slice(0, 40) || "Hello";
   const chats: ChatListItem[] = [
     {
       id: "current",
@@ -219,7 +218,7 @@ export default function HomePage() {
         <div className="hp-mob-body">
           <div className="hp-mob-tabs">
             <div className="hp-mob-tab active">
-              <span>❯</span> {isEntry ? "new chat" : currentTitle}
+              <span>❯</span> {isEntry ? "Hello" : currentTitle}
             </div>
           </div>
           <ChatStream
@@ -243,7 +242,7 @@ export default function HomePage() {
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
           chats={chats}
-          files={STUB_FILES}
+          // files={STUB_FILES}
         />
         <StatusBar msgCount={messages.length} streaming={streaming} compact />
       </div>
@@ -255,8 +254,8 @@ export default function HomePage() {
       <div className="hp-body" style={{ ["--rail-w" as string]: "264px" }}>
         <aside className="hp-rail">
           <ChatHistoryPanel chats={chats} />
-          <div className="hp-rail-divider" />
-          <FileTreePanel files={STUB_FILES} />
+          {/* <div className="hp-rail-divider" /> */}
+          {/* <FileTreePanel files={STUB_FILES} /> */}
         </aside>
         <main className="hp-main">
           <TabBar
@@ -270,8 +269,8 @@ export default function HomePage() {
             ]}
           />
           <Crumbs
-            path={["~", "braden-kowitz", isEntry ? "Hello" : "chat"]}
-            meta={`${isEntry ? "new session" : "session"} · 80×24 · utf-8`}
+            path={["~", "kowitz.co", isEntry ? "Hello" : "chat"]}
+            meta={isEntry ? "new session" : "active session"}
           />
           <div className="hp-content">
             <div className="hp-chat">

@@ -218,19 +218,8 @@ export function Crumbs({ path, meta }: { path: string[]; meta?: string }) {
 export function EmptyState() {
   return (
     <div className="hp-empty">
-      <div className="mark">
-        ~/<span style={{ color: "var(--accent)" }}>braden-kowitz</span>
-      </div>
-      <div className="role">Product Design Leader.</div>
-      <div className="hint">ask me anything · type / for commands</div>
-      <div className="cmds">
-        <div>
-          <span className="cmd-name">/clear</span>reset session
-        </div>
-        <div>
-          <span className="cmd-name">/retry</span>retry last message
-        </div>
-      </div>
+      <div className="name">Braden Kowitz</div>
+      <div className="role">Product Design Leader</div>
     </div>
   );
 }
@@ -399,7 +388,7 @@ export function MobileHeader({ onMenu }: { onMenu: () => void }) {
         <IconMenu size={18} />
       </button>
       <span className="brand">
-        ~/<span style={{ color: "var(--accent)" }}>braden-kowitz</span>
+        ~/<span style={{ color: "var(--accent)" }}>kowitz.co</span>
       </span>
       <span className="spacer" />
       <button className="btn" aria-label="search">
@@ -421,7 +410,7 @@ export function MobileDrawer({
   open: boolean;
   onClose: () => void;
   chats: ChatListItem[];
-  files: FileNode[];
+  files?: FileNode[];
 }) {
   if (!open) return null;
   return (
@@ -430,14 +419,14 @@ export function MobileDrawer({
       <div className="hp-sheet" role="dialog" aria-label="menu">
         <div className="hp-sheet-head">
           <span className="brand">
-            ~/<span style={{ color: "var(--accent)" }}>braden-kowitz</span>
+            ~/<span style={{ color: "var(--accent)" }}>kowitz.co</span>
           </span>
           <button className="close" onClick={onClose} aria-label="close">
             <IconClose size={14} />
           </button>
         </div>
         <ChatHistoryPanel chats={chats} />
-        <FileTreePanel files={files} />
+        {files && <FileTreePanel files={files} />}
       </div>
     </>
   );
